@@ -7,9 +7,32 @@ http://www.mulesoft.org/schema/mule/http http://www.mulesoft.org/schema/mule/htt
 	<http:listener-config name="HTTP_Listener_config" doc:name="HTTP Listener config" doc:id="e4128628-e10d-41ef-b28c-ea36da9e4e47" >
 		<http:listener-connection host="0.0.0.0" port="8081" />
 	</http:listener-config>
+	<http:request-config name="HTTP_Request_configuration" doc:name="HTTP Request configuration" doc:id="afea1a81-3a27-4d20-81ff-df41b3238bdb" >
+		<http:request-connection host="localhost" port="8081" />
+	</http:request-config>
 	<flow name="helloFlow" doc:id="b8a16237-7ae7-4ebd-9dad-dcc71c32a3b8" >
-		<http:listener doc:name="GET /hello" doc:id="31b2019f-61a3-4ef6-ba31-5a9331706202" config-ref="HTTP_Listener_config" path="/hello" allowedMethods="GET"/>
+		<http:listener doc:name="GET /hello" doc:id="31b2019f-61a3-4ef6-ba31-5a9331706202" config-ref="HTTP_Listener_config" path="/hello" allowedMethods="GET">
+			<http:response reasonPhrase="Success" >
+				<http:headers ><![CDATA[#[output application/java
+---
+{
+	"name" : "Max"
+}]]]></http:headers>
+			</http:response>
+		</http:listener>
 		<set-payload value="Hello" doc:name="Hello" doc:id="9f086593-653d-4c39-b9d5-5759df7d013c" />
+		<http:request method="GET" doc:name="GET /goodbye" doc:id="10a6ff22-cc2d-482f-b965-de096b5271fd" config-ref="HTTP_Request_configuration" path="/goodbye" responseTimeout="300000">
+			<http:query-params ><![CDATA[#[output application/java
+---
+{
+	"fullName" : "Max Mule"
+}]]]></http:query-params>
+		</http:request>
 		<logger level="INFO" doc:name="Logger" doc:id="3f19754d-5f6d-4942-8757-55192fdca3df" />
+	</flow>
+	<flow name="goodbyeFlow" doc:id="52fee9a1-b6bc-4b44-81ed-fd104f13df6a" >
+		<http:listener doc:name="GET /goodbye" doc:id="74a74961-b13f-4485-9f75-9a107688702e" config-ref="HTTP_Listener_config" path="/goodbye" allowedMethods="GET"/>
+		<set-payload value="Goodbye" doc:name="Goodbye" doc:id="c481e7e4-fed8-4aca-b84e-04d5c074a07c" />
+		<logger level="INFO" doc:name="Logger" doc:id="1e915488-d781-41a6-bd3c-3cd0cbb71ea3" />
 	</flow>
 </mule>
