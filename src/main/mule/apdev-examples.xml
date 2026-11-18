@@ -27,7 +27,7 @@ http://www.mulesoft.org/schema/mule/vm http://www.mulesoft.org/schema/mule/vm/cu
 			</http:response>
 		</http:listener>
 		<flow-ref doc:name="subflow" doc:id="3505a2c8-bc16-4b9c-98a0-d29bac85190b" name="subflow"/>
-		<vm:publish-consume doc:name="VM goodbye" doc:id="e6823fd3-51a6-4087-9300-ac8b9e16f793" config-ref="VM_Config" queueName="goodbye" timeout="300"/>
+		<vm:publish queueName="goodbye" doc:name="VM goodbye" doc:id="ec637807-65e3-485d-bdbd-c7bfa0542e8f" config-ref="VM_Config" timeout="300"/>
 		<logger level="INFO" doc:name="payload" doc:id="3f19754d-5f6d-4942-8757-55192fdca3df" message="#['\nMessage: ' ++ payload]"/>
 	</flow>
 	<flow name="privateFlow" doc:id="0ead6c3b-d4a7-4008-b76d-e5f523108a1f">
