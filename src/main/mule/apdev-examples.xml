@@ -5,17 +5,7 @@
 	xmlns:doc="http://www.mulesoft.org/schema/mule/documentation" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
 http://www.mulesoft.org/schema/mule/http http://www.mulesoft.org/schema/mule/http/current/mule-http.xsd
 http://www.mulesoft.org/schema/mule/vm http://www.mulesoft.org/schema/mule/vm/current/mule-vm.xsd">
-	<http:listener-config name="HTTP_Listener_config" doc:name="HTTP Listener config" doc:id="e4128628-e10d-41ef-b28c-ea36da9e4e47" >
-		<http:listener-connection host="0.0.0.0" port="8081" />
-	</http:listener-config>
-	<http:request-config name="HTTP_Request_configuration" doc:name="HTTP Request configuration" doc:id="afea1a81-3a27-4d20-81ff-df41b3238bdb" >
-		<http:request-connection host="localhost" port="8081" />
-	</http:request-config>
-	<vm:config name="VM_Config" doc:name="VM Config" doc:id="6e3d4b79-3b0e-4524-9e8e-5db0aff37acf" >
-		<vm:queues >
-			<vm:queue queueName="goodbye" />
-		</vm:queues>
-	</vm:config>
+
 	<flow name="helloFlow" doc:id="b8a16237-7ae7-4ebd-9dad-dcc71c32a3b8" >
 		<http:listener doc:name="GET /hello" doc:id="31b2019f-61a3-4ef6-ba31-5a9331706202" config-ref="HTTP_Listener_config" path="/hello" allowedMethods="GET">
 			<http:response reasonPhrase="Success" >
