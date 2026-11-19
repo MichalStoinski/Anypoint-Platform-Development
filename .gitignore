@@ -45,3 +45,28 @@ target/
 .mule/
 .DS_Store
 velocity.log
+
+# ------------------------------------------------ #
+# Secrets (Salesforce JWT setup), never commit     #
+# ------------------------------------------------ #
+*.jks
+*.p12
+*.pfx
+*.key
+*.pem
+sf-jwt.crt
+
+# Property files holding real credentials
+# (commit a template such as config.example.yaml with dummy values instead)
+src/main/resources/secrets*.yaml
+src/main/resources/secrets*.properties
+src/main/resources/*-local.yaml
+src/main/resources/*-local.properties
+
+# ----------------- #
+# Other IDEs / logs #
+# ----------------- #
+*.log
+*.iml
+.idea/
+.vscode/
