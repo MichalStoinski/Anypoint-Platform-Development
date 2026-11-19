@@ -25,7 +25,7 @@ http://www.mulesoft.org/schema/mule/salesforce http://www.mulesoft.org/schema/mu
 		</vm:queues>
 	</vm:config>
 	<salesforce:sfdc-config name="Salesforce_Config" doc:name="Salesforce Config" doc:id="87bfefb3-98d4-46bc-bf2d-3e58df58fa6b" >
-		<salesforce:basic-connection username="michal.stoinski@creative-moose-i96nam.com" password="mW*J?DP6TsA.?3W" securityToken="1aKhpgisphG9S2InMIhkTx9Kl" url="https://login.salesforce.com/services/Soap/u/64.0" />
+		<salesforce:jwt-connection consumerKey="3MVG9k02hQhyUgQAbGNOp8fEXrBq4YQzvYCSfKxybBm7tpLN94gSyO.qzzO7l2_zii0fnyM2w3Lvo91fO11Hy" keyStore="C:\Users\michal.stoinski\AnypointStudio\studio-workspace\apdev-examples\src\main\resources\sf-jwt.jks" storePassword="changeit" certificateAlias="sfjwt" principal="michal.stoinski@creative-moose-i96nam.com" tokenEndpoint="https://creative-moose-i96nam-dev-ed.trailblaze.my.salesforce.com/services/oauth2/token" audienceUrl="https://login.salesforce.com" />
 	</salesforce:sfdc-config>
 	
 	
